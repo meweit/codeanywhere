@@ -131,7 +131,8 @@ if($cc>0){
 if(count($_POST)>0){
 $title =$_POST['input_title'];
 $title =strip_tags($title);//清除html標籤
-//$title =rawurlencode($title);
+//$title =base64_encode($title);
+$title =rawurlencode($title);
 
 //$title =preg_replace('/\'/', '', $title);
 //$title =preg_replace('/\"/', '', $title);
@@ -232,7 +233,7 @@ EOT;
 
 if(strlen($title)){
 $FFF=$title;
-//$FFF =rawurlencode($title);
+$FFF =rawurlencode($title);
 $sql.=<<<EOT
 WHERE c01 = '$FFF'
 EOT;
@@ -290,15 +291,17 @@ while ($row = $stmt->fetch() ) {
   //echo $row['c01']."\t".$row['c02']."\t".$row['c03']."\t".$row['c04']."\t".$row['id']."\t".$row['auto_time']."\n"
   echo "\n";
   echo '<div class="box">';
-  //$FFF=rawurldecode( $row['c01'] );
+  $FFF=$row['c01'];
+	//$FFF=base64_decode($FFF);
+  $FFF=rawurldecode( $row['c01'] );
   echo '<div class="title"><h3>#<sub>'.$cc.'</sub>#<sup>'.$row['auto_id'].'</sup>#'.$FFF.'</h3></div>';
 //mysql的utf8只支援到unicode5.0
-$tmp=$row['c02'];
-$tmp=base64_decode($tmp);
+$FFF=$row['c02'];
+$FFF=base64_decode($FFF);
 //$tmp=nl2br($tmp);
 //$tmp=preg_replace('/\s/','',$tmp);
 
-  echo '<div class="text">'.$tmp.'</div>';
+  echo '<div class="text">'.$FFF.'</div>';
   //echo '<pre>'.$row['c03'].'</pre>';//base64_decode($row['c03']).
 $tmp=$row['auto_time'];//可讀時間
 $tmp=strtotime($tmp)+8*3600;//時間戳,修正時差
@@ -332,6 +335,7 @@ $action='';
 $action.=$phpself;
 if( isset($_GET['title']) ){
 	$title=$_GET['title'];
+	//$title=base64_decode($title);
 	$action.='?title='.$title;
 }else{}
 
