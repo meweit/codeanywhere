@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS $table_name
 	UNIQUE(c03),
 	auto_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	auto_time timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)
+)ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 EOT;
 //timestamp timestamp default current_timestamp
 //UNIQUE(c02),
