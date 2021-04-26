@@ -1,8 +1,8 @@
 <?php
 
 $dbhost = 'localhost';
-$dbuser = '';
+$dbuser = 'root';
 $dbpass = '';
-$dbname = '';
+$dbname = 'mysql';
 
 ?>
