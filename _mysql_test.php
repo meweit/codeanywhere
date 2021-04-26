@@ -15,7 +15,7 @@ error_reporting(E_ALL & ~E_NOTICE); //所有錯誤中排除NOTICE提示
 
 try{
 //連結
-require_once('170415v5__user.php');
+require_once('_mysql_user.php');
 
 //$tmp=function(){
 if(0){
