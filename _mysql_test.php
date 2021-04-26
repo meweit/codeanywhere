@@ -131,7 +131,7 @@ if($cc>0){
 if(count($_POST)>0){
 $title =$_POST['input_title'];
 $title =strip_tags($title);//清除html標籤
-$title =rawurlencode($title);
+//$title =rawurlencode($title);
 
 //$title =preg_replace('/\'/', '', $title);
 //$title =preg_replace('/\"/', '', $title);
@@ -231,7 +231,8 @@ select * from $table_name
 EOT;
 
 if(strlen($title)){
-$FFF =rawurlencode($title);
+$FFF=$title;
+//$FFF =rawurlencode($title);
 $sql.=<<<EOT
 WHERE c01 = '$FFF'
 EOT;
@@ -289,7 +290,7 @@ while ($row = $stmt->fetch() ) {
   //echo $row['c01']."\t".$row['c02']."\t".$row['c03']."\t".$row['c04']."\t".$row['id']."\t".$row['auto_time']."\n"
   echo "\n";
   echo '<div class="box">';
-  $FFF=rawurldecode( $row['c01'] );
+  //$FFF=rawurldecode( $row['c01'] );
   echo '<div class="title"><h3>#<sub>'.$cc.'</sub>#<sup>'.$row['auto_id'].'</sup>#'.$FFF.'</h3></div>';
 //mysql的utf8只支援到unicode5.0
 $tmp=$row['c02'];
